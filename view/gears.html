@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/css/gears.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/devextreme/18.2.18/css/dx.common.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/devextreme/18.2.18/js/dx.all.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn3.devexpress.com/jslib/23.2.3/css/dx.material.blue.light.css"
+    />
+    <script src="js/dx.all.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body id="body">
+    <div class="gears-entire-wrap">
+      <div class="gears-top-header-wrap">
+        <div class="gears-top-header-element">
+          <div class="img/gears-img">
+            <img src="/img/gears_logo.png" class="gears_logo" />
+          </div>
+
+          <div class="gears-right">
+            <div class="gears-header-home">
+              <img src="/img/ic-home.png" class="ic-home" />KR HOME
+            </div>
+            <div class="gears-header-logout">
+              <img src="/img/ic-logout.png" class="ic-logout" />Logout
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gears-header-wrap">
+        <div class="gears-header-element">
+          <div class="gears-header-font">DashBoard</div>
+          <div class="gears-header-my-vessels">My Vessels</div>
+          <div class="gears-header-font">Application</div>
+          <div class="gears-header-font">Manage Plan</div>
+          <div class="gears-header-font">Manage Data</div>
+          <div class="gears-header-font">Efficiency</div>
+          <div class="gears-header-font">EEOI</div>
+        </div>
+      </div>
+
+      <div class="gears-table-wrap">
+        <body class="dx-viewport">
+          <div class="demo-container">
+            <div id="data-grid-demo">
+              <div class="gears-my-vessels">My Vessels</div>
+              <div class="gears-table-header-wrap">
+                <div class="gears-total"></div>
+                <div class="gears-table-header-right">
+                  <div class="gears-manage-list">
+                    <img
+                      src="/img/ic-manage list@2x.png"
+                      class="ic-manage-list"
+                    />Manage List
+                  </div>
+                  <div class="dx-field-value">
+                    <div id="products-simple"></div>
+                  </div>
+                  <input placeholder="Search..." class="gears-search-input" />
+                  <button class="gears-search-btn">Search</button>
+                  <div class="gears-refresh-btn">
+                    <img src="/img/ic-refresh@3x.png" class="ic-refresh" />
+                  </div>
+                </div>
+              </div>
+
+              <div id="gridContainer" class="gears"></div>
+              <div id="searchMode"></div>
+              <div class="gears-btn-wrap">
+                <div>
+                  <button class="gears-new-btn">New</button>
+                  <button class="gears-add-btn">Add from e-fleet</button>
+                  <button class="gears-sync-btn">Sync API</button>
+                </div>
+                <div>
+                  <button class="gears-delete-btn">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+      </div>
+
+      <div id="popup">
+        <div class="popup-entire-wrap">
+          <div>
+            <div class="popup-alert-wrap">
+              <div class="popup-alert">
+                <img src="/img/notice_gray.png" class="notice_gray" />
+                The blue field is required data.
+              </div>
+            </div>
+            <div class="popup-top">
+              <div class="popup-technical">Technical Manager</div>
+              <div class="popup-yes">YES</div>
+            </div>
+            <div class="gears-popup-tab">
+              <button
+                id="shipParticularBtn"
+                class="gears-popup-tab-ship-particular"
+              >
+                Ship particular
+              </button>
+              <button class="gears-popup-tab-MRV" id="mrv-btn">MRV</button>
+              <!-- <button class="gears-popup-tab-DCS" id="dcs-btn">DCS</button> 타입/규칙 -->
+              <button class="gears-popup-tab-CII" id="cii-btn">CII</button>
+            </div>
+
+            <!-- Ship particular -->
+            <div id="shipParticular">
+              <div class="ship-particular-table-middle">
+                <div class="popup-table-element-wrap">
+                  <div class="popup-IMO-No">
+                    <div>IMO No.</div>
+                    <input class="IMO-input" value="1245700" />
+                  </div>
+                  <div class="popup-ship-name">
+                    <div>Ship Name</div>
+                    <input
+                      class="ship-name-input"
+                      value="TEST1-1212123"
+                      onchange="changedValue()"
+                    />
+                  </div>
+                </div>
+                <div class="popup-ship-particular-middle">
+                  <div class="popup-ship-first">
+                    <div class="popup-gt">
+                      <div>GT</div>
+                      <input
+                        class="gt-input"
+                        value="12,345"
+                        onchange="imoVal()"
+                      />
+                    </div>
+                    <div class="popup-nt">
+                      <div>NT</div>
+                      <input class="nt-input" value="999,999" />
+                    </div>
+                  </div>
+                  <div class="popup-ship-second">
+                    <div class="popup-dwt">
+                      <div class="ship-particular-margin">DWT</div>
+                      <input class="dwt-input" value="12,345" />
+                    </div>
+                    <div class="popup-eedi">
+                      <div class="ship-particular-margin">EEDI(EIV)</div>
+                      <input class="EEDI-input" value="123.00" />
+                    </div>
+                  </div>
+                  <div class="popup-ship-third">
+                    <div class="popup-ice-class">
+                      <div class="ship-particular-margin">Ice Class</div>
+                      <input class="ice-input" value="None" />
+                    </div>
+                    <div class="popup-propulsion">
+                      <div class="ship-particular-margin">
+                        Main Propulsion Power(kW)
+                      </div>
+                      <input class="propulsion-input" />
+                    </div>
+                  </div>
+                  <div class="popup-ship-fourth">
+                    <div class="popup-auxiliary-Engine">
+                      <div class="ship-particular-margin">
+                        Auxiliary Engine(kW)
+                      </div>
+                      <input class="Auxiliary-input" value="123.00" />
+                    </div>
+                    <div class="popup-ME-SFOC">
+                      <div class="ship-particular-margin">ME SFOC(g/kwh)</div>
+                      <input class="SFOC-input" value="181" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="popup-ship-particular-bottom">
+                <div class="popup-ship-fifth">
+                  <div class="ship-particular-flex">
+                    <div
+                      class="ship-particular-flex-element element-margin-right"
+                    >
+                      <div class="ship-particular-margin">Flag</div>
+                      <input
+                        class="ship-name-input"
+                        value="THE REPUBLIC OF CYPRUS"
+                      />
+                    </div>
+                    <div class="ship-particular-flex-element">
+                      <div class="ship-particular-margin">Port of Registry</div>
+                      <input class="ship-name-input" value="NICOSIA" />
+                    </div>
+                  </div>
+                  <div class="ship-particular-flex">
+                    <div
+                      class="ship-particular-flex-element element-margin-right"
+                    >
+                      <div class="ship-particular-margin element-margin-top">
+                        Ship Owner
+                      </div>
+                      <input class="ice-input" value="123e" />
+                    </div>
+                    <div class="ship-particular-flex-element">
+                      <div class="ship-particular-margin element-margin-top">
+                        Ship Owner
+                      </div>
+                      <input class="ice-input" value="KOREAN REGISTER" />
+                    </div>
+                  </div>
+                  <div class="ship-particular-flex">
+                    <div
+                      class="ship-particular-flex-element element-margin-top element-margin-right"
+                    >
+                      <div class="ship-particular-margin">Official No</div>
+                      <input class="ice-input" />
+                    </div>
+                    <div
+                      class="ship-particular-flex-element element-margin-top"
+                    >
+                      <div class="ship-particular-margin">Signal Letters</div>
+                      <input class="ice-input" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ship-particular-end">
+                <div>Remark</div>
+                <input class="remark-input" />
+              </div>
+            </div>
+            <!-- MRV -->
+            <div id="mrv" class="mrv">
+              <div class="ship-particular-table-middle MRV-wrap">
+                <div class="ship-particular-flex">
+                  <div
+                    class="ship-particular-flex-element element-margin-right"
+                  >
+                    <div class="ship-particular-margin">Ship Type(EU MRV)</div>
+                    <input class="ice-input" />
+                  </div>
+                  <div class="ship-particular-flex-element">
+                    <div class="ship-particular-margin">MRV Company</div>
+                    <input class="ice-input" />
+                  </div>
+                </div>
+                <div class="element-margin-top">
+                  <div class="ship-particular-margin">MRV Method</div>
+                  <input class="ice-input" />
+                </div>
+              </div>
+            </div>
+
+            <!-- DCS -->
+            <div id="dcs" class="DCS-wrap">
+              <div class="ship-particular-table-middle dcs-wrapper">
+                <div class="ship-particular-flex">
+                  <div
+                    class="ship-particular-flex-element element-margin-right"
+                  >
+                    <div class="ship-particular-margin">Ship Type(EU MRV)</div>
+                    <input class="ship-name-input" />
+                  </div>
+                  <div class="ship-particular-flex-element">
+                    <div class="ship-particular-margin">MRV Company</div>
+                    <input class="ice-input" />
+                  </div>
+                </div>
+
+                <div class="ship-particular-flex element-margin-top">
+                  <div
+                    class="ship-particular-flex-element element-margin-right"
+                  >
+                    <div class="ship-particular-margin">Year of Delivery</div>
+                    <input class="ice-input" />
+                  </div>
+                  <div class="ship-particular-flex-element">
+                    <div class="ship-particular-margin">EEXI</div>
+                    <input class="ice-input" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CII -->
+
+            <div id="cii" class="CII-wrap">
+              <div class="ship-particular-table-middle">
+                <div class="cii-linkage">linkage with EEXI: NO</div>
+                <div class="cii-wrapper">
+                  <div class="ship-particular-flex">
+                    <div
+                      class="ship-particular-flex-element element-margin-right"
+                    >
+                      <div class="ship-particular-margin">
+                        fi (ice classed ship)
+                      </div>
+                      <input
+                        class="IMO-input text-align-right"
+                        value="0"
+                        readonly
+                      />
+                    </div>
+                    <div class="ship-particular-flex-element">
+                      <div class="ship-particular-margin">
+                        fm (ice classed ship)
+                      </div>
+                      <input
+                        class="IMO-input text-align-right"
+                        value="0"
+                        readonly
+                      />
+                    </div>
+                  </div>
+
+                  <div class="ship-particular-flex element-margin-top">
+                    <div
+                      class="ship-particular-flex-element element-margin-right"
+                    >
+                      <div class="ship-particular-margin">
+                        fc (chemical tanker)
+                      </div>
+                      <input
+                        class="IMO-input text-align-right"
+                        value="0"
+                        readonly
+                      />
+                    </div>
+                    <div class="ship-particular-flex-element">
+                      <div class="ship-particular-margin">
+                        fi,vse (self-unloading bulk)
+                      </div>
+                      <input class="ice-input" />
+                    </div>
+                  </div>
+                  <div class="ship-particular-margin element-margin-top">
+                    Trial Purpose
+                  </div>
+                  <input class="ice-input" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup-btn-wrap">
+          <button class="popup-save-btn" onclick="saveData()">Save</button>
+          <button
+            class="popup-close-btn"
+            onclick="popup.hide();  showShipParticular()"
+            같이호출
+            함수
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/data.js"></script>
+    <script src="/js/popup.js"></script>
+    <script src="/js/gears.js"></script>
+    <script src="/js/table.js"></script>
+  </body>
+</html>
