@@ -54,7 +54,7 @@
       <div class="gears-table-wrap">
         <body class="dx-viewport">
           <div class="demo-container">
-            <div id="data-grid-demo">
+            <div id="dataGridDemo">
               <div class="gears-my-vessels">My Vessels</div>
               <div class="gears-table-header-wrap">
                 <div class="gears-total"></div>
@@ -66,10 +66,12 @@
                     />Manage List
                   </div>
                   <div class="dx-field-value">
-                    <div id="products-simple"></div>
+                    <div id="productSimple"></div>
                   </div>
                   <input placeholder="Search..." class="gears-search-input" />
-                  <button class="gears-search-btn">Search</button>
+                  <button class="gears-search-btn" type="button" type="button">
+                    Search
+                  </button>
                   <div class="gears-refresh-btn">
                     <img src="/img/ic-refresh@3x.png" class="ic-refresh" />
                   </div>
@@ -80,12 +82,14 @@
               <div id="searchMode"></div>
               <div class="gears-btn-wrap">
                 <div>
-                  <button class="gears-new-btn">New</button>
-                  <button class="gears-add-btn">Add from e-fleet</button>
-                  <button class="gears-sync-btn">Sync API</button>
+                  <button class="gears-new-btn" type="button">New</button>
+                  <button class="gears-add-btn" type="button">
+                    Add from e-fleet
+                  </button>
+                  <button class="gears-sync-btn" type="button">Sync API</button>
                 </div>
                 <div>
-                  <button class="gears-delete-btn">Delete</button>
+                  <button class="gears-delete-btn" type="button">Delete</button>
                 </div>
               </div>
             </div>
@@ -109,13 +113,32 @@
             <div class="gears-popup-tab">
               <button
                 id="shipParticularBtn"
-                class="gears-popup-tab-ship-particular"
+                class="gears-popup-tab-ship-particular tab-btn"
+                type="button"
               >
                 Ship particular
               </button>
-              <button class="gears-popup-tab-MRV" id="mrv-btn">MRV</button>
-              <!-- <button class="gears-popup-tab-DCS" id="dcs-btn">DCS</button> 타입/규칙 -->
-              <button class="gears-popup-tab-CII" id="cii-btn">CII</button>
+              <button
+                class="gears-popup-tab-MRV tab-btn"
+                id="mrvBtn"
+                type="button"
+              >
+                MRV
+              </button>
+              <button
+                class="gears-popup-tab-DCS tab-btn"
+                id="dcsBtn"
+                type="button"
+              >
+                DCS
+              </button>
+              <button
+                class="gears-popup-tab-CII tab-btn"
+                id="ciiBtn"
+                type="button"
+              >
+                CII
+              </button>
             </div>
 
             <!-- Ship particular -->
@@ -356,10 +379,13 @@
         </div>
 
         <div class="popup-btn-wrap">
-          <button class="popup-save-btn" onclick="saveData()">Save</button>
+          <button class="popup-save-btn" onclick="saveData()" type="button">
+            Save
+          </button>
           <button
             class="popup-close-btn"
             onclick="popup.hide();  showShipParticular()"
+            type="button"
             같이호출
             함수
           >

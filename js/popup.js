@@ -1,6 +1,6 @@
 function applyData(e) {
-  //
   popup.show();
+  showShipParticular();
   IMO.value = e.data.IMO_NO;
   originData = e.data;
 }
@@ -10,6 +10,10 @@ function showShipParticular() {
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
+  shipParticularBtn.classList.add("active-modal-btn");
+  cii.classList.remove("active-modal-btn");
+  dcs.classList.remove("active-modal-btn");
+  mrv.classList.remove("active-modal-btn");
 }
 
 function showMRV() {
@@ -17,18 +21,30 @@ function showMRV() {
   shipParticular.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
+  mrv.classList.add("active-modal-btn");
+  shipParticularBtn.classList.remove("active-modal-btn");
+  cii.classList.remove("active-modal-btn");
+  dcs.classList.remove("active-modal-btn");
 }
 function showDCS() {
   shipParticular.style.display = "none";
   mrvTab.style.display = "none";
   dcsTab.style.display = "block";
   ciiTab.style.display = "none";
+  dcs.classList.add("active-modal-btn");
+  cii.classList.remove("active-modal-btn");
+  mrv.classList.remove("active-modal-btn");
+  shipParticularBtn.classList.remove("active-modal-btn");
 }
 function showCII() {
   shipParticular.style.display = "none";
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "block";
+  cii.classList.add("active-modal-btn");
+  mrv.classList.remove("active-modal-btn");
+  dcs.classList.remove("active-modal-btn");
+  shipParticularBtn.classList.remove("active-modal-btn");
 }
 
 function saveData() {
@@ -38,5 +54,4 @@ function saveData() {
   if (originData.IMO_NO !== changedData.IMO_NO) {
     alert(changedData.IMO_NO);
   }
-  showShipParticular(); //오픈후 문서
 }

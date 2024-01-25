@@ -111,7 +111,7 @@ body {
   text-align: center !important;
 }
 
-#data-grid-demo {
+#dataGridDemo {
   height: 805px;
 }
 td {
@@ -433,7 +433,6 @@ element.style {
 }
 .dx-overlay-content {
   width: 740px !important;
-  overflow: auto !important;
 }
 .popup-top {
   display: flex;
@@ -682,10 +681,6 @@ element.style {
   margin-top: 16px;
 }
 
-.dx-overlay-content {
-  overflow: auto;
-}
-
 .ship-particular-flex {
   display: flex;
 }
@@ -835,4 +830,21 @@ input {
 
 .text-align-right {
   text-align: right;
+}
+
+.active-modal-btn {
+  background-color: #fff;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: bold;
+  color: #19ba78;
+  border: solid 1px #ccc;
+}
+
+.tab-btn:hover {
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #333;
 }

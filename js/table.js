@@ -22,8 +22,10 @@ function showTable(data) {
         dataType: "number",
         width: 190,
 
-        cellTemplate(container) {
+        cellTemplate(container, options) {
           //행마다 넣는법
+          console.log(container);
+          console.log(options);
           const fieldData = data; //중복
           var wrapper = $("<div>").addClass("wrapper").appendTo(container);
           var firstSpan = $("<div>")
