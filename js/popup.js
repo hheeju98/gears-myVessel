@@ -1,8 +1,9 @@
 function applyData(e) {
+  console.log(e.IMO_NO);
   popup.show();
   showShipParticular();
-  IMO.value = e.data.IMO_NO;
-  originData = e.data;
+  IMO.value = e.IMO_NO;
+  originData = e;
 }
 
 function showShipParticular() {

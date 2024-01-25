@@ -56,7 +56,8 @@ function showTable(data) {
       showCheckBoxesMode: "always",
     },
     onRowClick: (e) => {
-      applyData(e); // e.data
+      console.log(e.data);
+      applyData(e.data); // e.data
     },
     showBorders: true,
   });

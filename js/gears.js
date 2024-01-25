@@ -1,15 +1,15 @@
+let originData;
 const shipParticular = document.getElementById("shipParticular");
 const mrvTab = document.getElementById("mrv");
 const dcsTab = document.getElementById("dcs");
 const ciiTab = document.getElementById("cii");
-
 const shipParticularTab = document.getElementById("shipParticularBtn");
 const mrv = document.getElementById("mrvBtn");
 const dcs = document.getElementById("dcsBtn");
 const cii = document.getElementById("ciiBtn");
 
 const IMO = document.querySelector(".IMO-input"); //전역변수 최소화
-let originData;
+
 // 탭 클릭시 색 변경
 const popup = $("#popup")
   .dxPopup({
