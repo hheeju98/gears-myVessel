@@ -23,20 +23,16 @@ function showTable(data) {
         width: 190,
 
         cellTemplate(container, options) {
-          //행마다 넣는법
-          console.log(container);
-          console.log(options);
-          const fieldData = data; //중복
           var wrapper = $("<div>").addClass("wrapper").appendTo(container);
           var firstSpan = $("<div>")
-            .addClass(fieldData.length >= 0 ? "CII-Rating1" : "CII-Rating")
+            .addClass(options.data.No <= 3 ? "CII-Rating1" : "CII-Rating")
             .appendTo(wrapper);
           $("<div>")
-            .addClass(fieldData.length >= 0 ? "CII-first1" : "CII-first")
+            .addClass(options.data.No <= 3 ? "CII-first1" : "CII-first")
             .text("C")
             .appendTo(firstSpan);
           $("<div>")
-            .addClass(fieldData.length >= 0 ? "CII-second1" : "CII-second")
+            .addClass(options.data.No <= 3 ? "CII-second1" : "CII-second")
             .text("21")
             .appendTo(firstSpan);
 
@@ -57,7 +53,7 @@ function showTable(data) {
     },
     onRowClick: (e) => {
       console.log(e.data);
-      applyData(e.data); // e.data
+      applyData(e.data);
     },
     showBorders: true,
   });
