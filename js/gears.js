@@ -7,10 +7,14 @@ const shipParticularTab = document.getElementById("shipParticularBtn");
 const mrv = document.getElementById("mrvBtn");
 const dcs = document.getElementById("dcsBtn");
 const cii = document.getElementById("ciiBtn");
+const IMO = document.querySelector(".IMO-input");
 
-const IMO = document.querySelector(".IMO-input"); //전역변수 최소화
-
-// 탭 클릭시 색 변경
+const aa = [
+  {
+    displayValue: "",
+    className: "CII-first1",
+  },
+];
 const popup = $("#popup")
   .dxPopup({
     width: 740,
@@ -22,18 +26,19 @@ const popup = $("#popup")
     toolbarItems: [],
   })
   .dxPopup("instance");
-//스크롤 금욜
-function setSelectBox() {
-  $("#productSimple").dxSelectBox({
-    items: ["IMO No", "Ship Name"],
+
+function setSelectBox(id, arrayData) {
+  $(id).dxSelectBox({
+    items: arrayData,
     inputAttr: { "aria-label": "Simple Product" },
-    value: "IMO No",
+    value: arrayData[0],
   });
 }
+// api분라 api폴더
 
 function getData() {
   axios
-    .get("/js/gears.json")
+    .get("/js/gears.json") //axios분리
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
@@ -42,7 +47,7 @@ function getData() {
         ".gears-total"
       ).textContent = `Total : ${dataCount}`;
       showTable(tableData);
-      setSelectBox();
+      setSelectBox("#productSimple", IMO_no);
     })
     .catch((e) => {
       console.log("err=", e); //빈테이블
@@ -51,7 +56,6 @@ function getData() {
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
-
   shipParticularTab.addEventListener("click", showShipParticular);
   mrv.addEventListener("click", showMRV);
   dcs.addEventListener("click", showDCS);

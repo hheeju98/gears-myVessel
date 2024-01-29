@@ -1,13 +1,17 @@
+let tabType; // 탭함수 매개변수로
+
 function applyData(e) {
   console.log(e.IMO_NO);
   popup.show();
   showShipParticular();
   IMO.value = e.IMO_NO;
   originData = e;
+  setSelectBox("#iceClass", Ice_Class);
+  setSelectBox("#portOf", Port_of_Registry);
 }
 
 function showShipParticular() {
-  shipParticular.style.display = "block";
+  tabType = shipParticular.style.display = "block";
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
@@ -18,6 +22,7 @@ function showShipParticular() {
 }
 
 function showMRV() {
+  //함수 하나만 쓰는거
   mrvTab.style.display = "block";
   shipParticular.style.display = "none";
   dcsTab.style.display = "none";
@@ -53,6 +58,6 @@ function saveData() {
   changedData.IMO_NO = IMO.value;
   popup.hide();
   if (originData.IMO_NO !== changedData.IMO_NO) {
-    alert(changedData.IMO_NO);
+    alert(changedData.IMO_NO); //객체 만들기
   }
 }
