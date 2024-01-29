@@ -21,7 +21,6 @@ function showTable(data) {
         dataField: "CII_Rating",
         dataType: "number",
         width: 190,
-        // 함수로 빼는거
         cellTemplate(container, options) {
           createCIIcell(container, options);
         },
@@ -35,8 +34,6 @@ function showTable(data) {
     onRowClick: (e) => {
       console.log(e.data);
       applyData(e.data);
-      // setSelectBox("#iceClass", Ice_Class);
-      // setSelectBox("#portOf", Port_of_Registry);
     },
     showBorders: true,
   });
@@ -55,6 +52,7 @@ function createCIIcell(container, options) {
     .addClass(options.data.No <= 3 ? "CII-second1" : "CII-second")
     .text(options.data.No <= 3 ? "21 " : "-")
     .appendTo(firstSpan);
+
   for (let i = 1; i < 3; i++) {
     const secondSpan = $("<div>").addClass("CII-Rating").appendTo(wrapper);
     $("<div>").addClass("CII-first").text("-").appendTo(secondSpan);

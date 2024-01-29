@@ -34,11 +34,10 @@ function setSelectBox(id, arrayData) {
     value: arrayData[0],
   });
 }
-// api분라 api폴더
 
 function getData() {
   tableData
-    .get() //axios분리
+    .get()
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
@@ -50,14 +49,19 @@ function getData() {
       setSelectBox("#productSimple", IMO_no);
     })
     .catch((e) => {
-      console.log("err=", e); //빈테이블
+      console.log("err=", e);
     });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
-  shipParticularTab.addEventListener("click", showShipParticular);
-  mrv.addEventListener("click", showMRV);
-  dcs.addEventListener("click", showDCS);
-  cii.addEventListener("click", showCII);
+  shipParticularTab.addEventListener("click", () =>
+    showModalTab(shipParticular, shipParticularTab)
+  );
+  mrv.addEventListener("click", () => showModalTab(mrvTab, mrv));
+  dcs.addEventListener("click", () => showModalTab(dcsTab, dcs));
+  cii.addEventListener("click", () => showModalTab(ciiTab, cii));
+  shipParticularTab.addEventListener("click", () =>
+    showModalTab(shipParticular, shipParticularTab)
+  );
 });

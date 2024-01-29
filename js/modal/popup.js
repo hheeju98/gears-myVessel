@@ -2,15 +2,7 @@ let tabType; // 탭함수 매개변수로
 function applyData(e) {
   console.log(e.IMO_NO);
   popup.show();
-  showShipParticular();
-  IMO.value = e.IMO_NO;
-  originData = e;
-  setSelectBox("#iceClass", Ice_Class);
-  setSelectBox("#portOf", Port_of_Registry);
-}
-
-function showShipParticular() {
-  tabType = shipParticular.style.display = "block";
+  shipParticular.style.display = "block";
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
@@ -18,38 +10,23 @@ function showShipParticular() {
   cii.classList.remove("active-modal-btn");
   dcs.classList.remove("active-modal-btn");
   mrv.classList.remove("active-modal-btn");
+  IMO.value = e.IMO_NO;
+  originData = e;
+  setSelectBox("#iceClass", Ice_Class);
+  setSelectBox("#portOf", Port_of_Registry);
 }
 
-function showMRV() {
-  //함수 하나만 쓰는거
-  mrvTab.style.display = "block";
-  shipParticular.style.display = "none";
-  dcsTab.style.display = "none";
-  ciiTab.style.display = "none";
-  mrv.classList.add("active-modal-btn");
-  shipParticularBtn.classList.remove("active-modal-btn");
-  cii.classList.remove("active-modal-btn");
-  dcs.classList.remove("active-modal-btn");
-}
-function showDCS() {
-  shipParticular.style.display = "none";
-  mrvTab.style.display = "none";
-  dcsTab.style.display = "block";
-  ciiTab.style.display = "none";
-  dcs.classList.add("active-modal-btn");
-  cii.classList.remove("active-modal-btn");
-  mrv.classList.remove("active-modal-btn");
-  shipParticularBtn.classList.remove("active-modal-btn");
-}
-function showCII() {
+function showModalTab(tabValue, tabBtn) {
   shipParticular.style.display = "none";
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
-  ciiTab.style.display = "block";
-  cii.classList.add("active-modal-btn");
-  mrv.classList.remove("active-modal-btn");
+  ciiTab.style.display = "none";
+  shipParticularTab.classList.remove("active-modal-btn");
+  cii.classList.remove("active-modal-btn");
   dcs.classList.remove("active-modal-btn");
-  shipParticularBtn.classList.remove("active-modal-btn");
+  mrv.classList.remove("active-modal-btn");
+  tabValue.style.display = "block";
+  tabBtn.classList.add("active-modal-btn");
 }
 
 function saveData() {
