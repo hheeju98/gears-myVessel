@@ -1,5 +1,4 @@
 let tabType; // 탭함수 매개변수로
-
 function applyData(e) {
   console.log(e.IMO_NO);
   popup.show();

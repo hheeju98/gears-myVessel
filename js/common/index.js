@@ -37,8 +37,8 @@ function setSelectBox(id, arrayData) {
 // api분라 api폴더
 
 function getData() {
-  axios
-    .get("/js/gears.json") //axios분리
+  tableData
+    .get() //axios분리
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
