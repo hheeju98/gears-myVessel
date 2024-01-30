@@ -1,4 +1,3 @@
-let originData;
 const shipParticular = document.getElementById("shipParticular");
 const mrvTab = document.getElementById("mrv");
 const dcsTab = document.getElementById("dcs");
@@ -66,12 +65,4 @@ document.addEventListener("DOMContentLoaded", function () {
   shipParticularTab.addEventListener("click", () =>
     showModalTab(shipParticular, shipParticularTab)
   );
-  $("#show-popup-button").dxButton({
-    text: "Show Popup",
-    width: 300,
-    type: "default",
-    onClick() {
-      popup.show();
-    },
-  });
 });

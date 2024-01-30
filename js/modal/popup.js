@@ -1,19 +1,29 @@
+let originData;
 const IMO = document.querySelector(".IMO-input");
 const shipName = document.querySelector(".ship-name-input");
 const GT = document.querySelector(".gt-input");
-const EEDI = document.querySelector(".EEDI-input");
+const NT = document.getElementById("nt");
 const DWT = document.querySelector(".dwt-input");
+const EEDI = document.querySelector(".EEDI-input");
+const iceClass = document.getElementById("iceClass");
+const propulsion = document.querySelector(".propulsion-input");
+const auxiliary = document.querySelector(".Auxiliary-input");
+const SFOC = document.querySelector(".SFOC-input");
+const flag = document.getElementById("flag");
+const registry = document.getElementById("portOfRegistry");
+const shipOwner = document.getElementById("shipOwner");
+const classification = document.getElementById("classification");
+const officialNO = document.getElementById("officialNO");
+const signalLetter = document.getElementById("signalLetter");
+const remark = document.querySelector(".remark-input");
 
 function moveToTop() {
-  console.log(htmlContent);
   htmlContent.scrollTop = 0;
 }
-function applyData(e) {
+function setData(e) {
   // 행눌러서 열때 호출
   console.log(e.IMO_NO);
-
   popupWithScrollView.show();
-
   shipParticular.style.display = "block";
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
@@ -26,7 +36,9 @@ function applyData(e) {
   originData = e;
   moveToTop();
   setSelectBox("#iceClass", Ice_Class);
-  setSelectBox("#portOf", Port_of_Registry);
+  setSelectBox("#flag", Flag);
+  setSelectBox("#portOfRegistry", Port_of_Registry);
+  setSelectBox("#classification", Classification);
 }
 
 function showModalTab(tabValue, tabBtn) {
@@ -44,7 +56,25 @@ function showModalTab(tabValue, tabBtn) {
 
 function saveData() {
   const changedData = {};
-  changedData.IMO_NO = IMO.value; //변한 후 데이터 save할때 호출
+  changedData.IMO_NO = IMO.value;
+  changedData.Ship_Name = shipName.value;
+  changedData.GT = GT.value;
+  changedData.NT = NT.value;
+  changedData.DWT = DWT.value;
+  changedData.EEDI = EEDI.value;
+  changedData.Ice_Class = iceClass.value;
+  changedData.PROPULSION = propulsion.value;
+  changedData.AUXILIARY = auxiliary.value;
+  changedData.SFOC = SFOC.value;
+  changedData.Flag = flag.value;
+  changedData.REGISTRY = registry.value;
+  changedData.SHIPOWNER = shipOwner.value;
+  changedData.Classification = classification.value;
+  changedData.OfficialNO = officialNO.value;
+  changedData.SignalLetter = signalLetter.value;
+  changedData.remark = remark.value;
+  console.log(changedData);
+
   popupWithScrollView.hide();
   if (originData.IMO_NO !== changedData.IMO_NO) {
     alert(changedData.IMO_NO); //객체 만들기

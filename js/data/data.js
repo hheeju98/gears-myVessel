@@ -14,5 +14,10 @@ Ice_Class = [
   "IA",
   "IA Super",
 ];
-
+Flag = ["THE REPUBLIC OF CYPRUS", "AFGHANISTAN", "ALAND ISLANDS", "ALBANIA"];
 Port_of_Registry = ["DEHDADI", "QALAT", "TORKHAM"];
+Classification = [
+  "KOREAN REGISTER",
+  "American Bureau of Shipping",
+  "Bareau Veritas",
+];

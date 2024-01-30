@@ -864,6 +864,20 @@ input {
   border: solid 1px #d5dadf;
   background-color: #fff;
 }
+#flag {
+  width: 290px !important;
+  height: 38px !important;
+  border-radius: 4px;
+  border: solid 1px #d5dadf;
+  background-color: #fff;
+}
+#classification {
+  width: 290px !important;
+  height: 38px !important;
+  border-radius: 4px;
+  border: solid 1px #d5dadf;
+  background-color: #fff;
+}
 .dx-overlay-content {
   overflow: auto !important;
 }
