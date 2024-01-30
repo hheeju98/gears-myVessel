@@ -7,15 +7,9 @@ const shipParticularTab = document.getElementById("shipParticularBtn");
 const mrv = document.getElementById("mrvBtn");
 const dcs = document.getElementById("dcsBtn");
 const cii = document.getElementById("ciiBtn");
-const IMO = document.querySelector(".IMO-input");
+const htmlContent = document.querySelector(".popup-lower-wrapper");
 
-const aa = [
-  {
-    displayValue: "",
-    className: "CII-first1",
-  },
-];
-const popup = $("#popup")
+const popupWithScrollView = $("#popup")
   .dxPopup({
     width: 740,
     height: 875,
@@ -24,6 +18,15 @@ const popup = $("#popup")
     hideOnOutsideClick: true,
     showCloseButton: true,
     toolbarItems: [],
+    contentTemplate() {
+      const $scrollView = $("<div/>");
+      $scrollView.append($("<div/>").html(htmlContent));
+      $scrollView.dxScrollView({
+        width: "100%",
+        height: "100%",
+      });
+      return $scrollView;
+    },
   })
   .dxPopup("instance");
 
@@ -41,7 +44,6 @@ function getData() {
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
-
       document.querySelector(
         ".gears-total"
       ).textContent = `Total : ${dataCount}`;
@@ -64,4 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
   shipParticularTab.addEventListener("click", () =>
     showModalTab(shipParticular, shipParticularTab)
   );
+  $("#show-popup-button").dxButton({
+    text: "Show Popup",
+    width: 300,
+    type: "default",
+    onClick() {
+      popup.show();
+    },
+  });
 });
