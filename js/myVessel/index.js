@@ -56,13 +56,13 @@ function getData() {
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
-  shipParticularTab.addEventListener("click", () =>
-    showModalTab(shipParticular, shipParticularTab)
+  shipParticularTab.addEventListener("click", (e) =>
+    showModalTab(e, shipParticular, shipParticularTab)
   );
-  mrv.addEventListener("click", () => showModalTab(mrvTab, mrv));
-  dcs.addEventListener("click", () => showModalTab(dcsTab, dcs));
-  cii.addEventListener("click", () => showModalTab(ciiTab, cii));
-  shipParticularTab.addEventListener("click", () =>
-    showModalTab(shipParticular, shipParticularTab)
+  mrv.addEventListener("click", (e) => showModalTab(e, mrvTab, mrv));
+  dcs.addEventListener("click", (e) => showModalTab(e, dcsTab, dcs));
+  cii.addEventListener("click", (e) => showModalTab(e, ciiTab, cii));
+  shipParticularTab.addEventListener("click", (e) =>
+    showModalTab(e, shipParticular, shipParticularTab)
   );
 });

@@ -15,7 +15,7 @@ const shipOwner = document.getElementById("shipOwner");
 const classification = document.getElementById("classification");
 const officialNO = document.getElementById("officialNO");
 const signalLetter = document.getElementById("signalLetter");
-const remark = document.querySelector(".remark-input");
+const remark = document.querySelector(".remark-input"); //탭마다 값 들고오기
 
 function setModal() {
   mrvTab.style.display = "none";
@@ -29,7 +29,7 @@ function setModal() {
 function setData(e) {
   popupWithScrollView.show();
   setModal();
-  shipParticular.style.display = "block";
+  shipParticular.style.display = "block"; // 안에서 전역말고
   shipParticularBtn.classList.add("active-modal-btn");
   IMO.value = e.IMO_NO;
   originData = e;
@@ -39,7 +39,9 @@ function setData(e) {
   setSelectBox("#classification", Classification);
 }
 
-function showModalTab(tabValue, tabBtn) {
+function showModalTab(e, tabValue, tabBtn) {
+  console.log(e);
+  // console.log(document.querySelector(`#${type}`));
   shipParticular.style.display = "none";
   shipParticularTab.classList.remove("active-modal-btn");
   setModal();
@@ -48,6 +50,7 @@ function showModalTab(tabValue, tabBtn) {
 }
 
 function saveData() {
+  // 함수 호출-> 무슨 탭인지 전달 함수에 -> 하수에 전달받은 타입에 따른 객체-> 리턴
   const changedData = {};
   changedData.IMO_NO = IMO.value;
   changedData.Ship_Name = shipName.value;
