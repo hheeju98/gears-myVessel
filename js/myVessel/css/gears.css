@@ -291,9 +291,6 @@ element.style {
   border-bottom: none !important;
 }
 
-.dx-overlay-content {
-  width: 150px !important;
-}
 .dx-state-focused::before {
   border-bottom: none !important;
 }
@@ -431,11 +428,11 @@ element.style {
   align-items: center;
   color: #ffc000;
 }
-.dx-overlay-content {
+/* .dx-overlay-content {
   width: 740px !important;
 
   height: 875px !important;
-}
+} */
 .popup-top {
   display: flex;
   margin-top: 17px;
@@ -738,9 +735,9 @@ element.style {
 .dx-toolbar {
   background-color: #09976e !important;
 }
-.dx-item-content {
+/* .dx-item-content {
   color: #fff;
-}
+} */
 .dx-button {
   background-color: #09976e !important;
   color: #fff !important;
@@ -878,6 +875,7 @@ input {
   border: solid 1px #d5dadf;
   background-color: #fff;
 }
-.dx-overlay-content {
-  overflow: auto !important;
+
+.dx-toolbar-item-content {
+  color: #fff !important;
 }

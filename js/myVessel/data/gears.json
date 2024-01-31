@@ -6,22 +6,7 @@
     "DOC": "img",
     "Technical_Manager": "No",
     "Sync_API": "No",
-    "CII_Rating": "img",
-    "GT": "54,321",
-    "NT": "54,321",
-    "DWT": "54,321",
-    "EEDI": "321.00",
-    "IceClass": "PC1",
-    "Propulsion": "321.00",
-    "Auxiliary": "321.00",
-    "SFOC": "0",
-    "Flag": "ANTARCTICA",
-    "Registry": "ESPERANZA",
-    "Ship_Owner": "321",
-    "Classification": "American",
-    "Official_NO": "321",
-    "Signal_Letter": "321",
-    "Remark": "gg"
+    "CII_Rating": "img"
   },
   {
     "No": 2,

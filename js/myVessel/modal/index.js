@@ -17,24 +17,22 @@ const officialNO = document.getElementById("officialNO");
 const signalLetter = document.getElementById("signalLetter");
 const remark = document.querySelector(".remark-input");
 
-function moveToTop() {
-  htmlContent.scrollTop = 0;
-}
-function setData(e) {
-  // 행눌러서 열때 호출
-  console.log(e.IMO_NO);
-  popupWithScrollView.show();
-  shipParticular.style.display = "block";
+function setModal() {
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
-  shipParticularBtn.classList.add("active-modal-btn");
   cii.classList.remove("active-modal-btn");
   dcs.classList.remove("active-modal-btn");
   mrv.classList.remove("active-modal-btn");
-  IMO.value = e.IMO_NO; // 처음에 열때 데이터
+}
+
+function setData(e) {
+  popupWithScrollView.show();
+  setModal();
+  shipParticular.style.display = "block";
+  shipParticularBtn.classList.add("active-modal-btn");
+  IMO.value = e.IMO_NO;
   originData = e;
-  moveToTop();
   setSelectBox("#iceClass", Ice_Class);
   setSelectBox("#flag", Flag);
   setSelectBox("#portOfRegistry", Port_of_Registry);
@@ -43,13 +41,8 @@ function setData(e) {
 
 function showModalTab(tabValue, tabBtn) {
   shipParticular.style.display = "none";
-  mrvTab.style.display = "none";
-  dcsTab.style.display = "none";
-  ciiTab.style.display = "none";
   shipParticularTab.classList.remove("active-modal-btn");
-  cii.classList.remove("active-modal-btn");
-  dcs.classList.remove("active-modal-btn");
-  mrv.classList.remove("active-modal-btn");
+  setModal();
   tabValue.style.display = "block";
   tabBtn.classList.add("active-modal-btn");
 }
@@ -62,21 +55,17 @@ function saveData() {
   changedData.NT = NT.value;
   changedData.DWT = DWT.value;
   changedData.EEDI = EEDI.value;
-  changedData.Ice_Class = iceClass.value;
+  changedData.Ice_Class = iceClass.textContent;
   changedData.PROPULSION = propulsion.value;
   changedData.AUXILIARY = auxiliary.value;
   changedData.SFOC = SFOC.value;
-  changedData.Flag = flag.value;
-  changedData.REGISTRY = registry.value;
+  changedData.Flag = flag.textContent;
+  changedData.REGISTRY = registry.textContent;
   changedData.SHIPOWNER = shipOwner.value;
-  changedData.Classification = classification.value;
+  changedData.Classification = classification.textContent;
   changedData.OfficialNO = officialNO.value;
   changedData.SignalLetter = signalLetter.value;
   changedData.remark = remark.value;
   console.log(changedData);
-
   popupWithScrollView.hide();
-  if (originData.IMO_NO !== changedData.IMO_NO) {
-    alert(changedData.IMO_NO); //객체 만들기
-  }
 }
