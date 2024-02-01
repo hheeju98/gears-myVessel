@@ -10,7 +10,7 @@ function createCIIcell(container, options) {
   $("<div>")
     .addClass(options.data.No <= 3 ? "CII-second1" : "CII-second")
     .text(options.data.No <= 3 ? "21 " : "-")
-    .appendTo(firstSpan); //
+    .appendTo(firstSpan); // 여기도 스크립트로
 
   for (let i = 1; i < 3; i++) {
     //스크립트로
@@ -55,7 +55,7 @@ function showTable(data) {
     },
     onRowClick: (e) => {
       console.log(e.data);
-      setData(e.data);
+      setData(e);
     },
     showBorders: true,
   });

@@ -1,4 +1,5 @@
 let originData;
+const shipParticularTab = document.getElementById("shipParticular");
 const IMO = document.querySelector(".IMO-input");
 const shipName = document.querySelector(".ship-name-input");
 const GT = document.querySelector(".gt-input");
@@ -18,6 +19,9 @@ const signalLetter = document.getElementById("signalLetter");
 const remark = document.querySelector(".remark-input"); //탭마다 값 들고오기
 
 function setModal() {
+  const mrvTab = document.getElementById("mrv");
+  const dcsTab = document.getElementById("dcs");
+  const ciiTab = document.getElementById("cii");
   mrvTab.style.display = "none";
   dcsTab.style.display = "none";
   ciiTab.style.display = "none";
@@ -29,7 +33,7 @@ function setModal() {
 function setData(e) {
   popupWithScrollView.show();
   setModal();
-  shipParticular.style.display = "block"; // 안에서 전역말고
+  shipParticularTab.style.display = "block"; // 안에서 전역말고
   shipParticularBtn.classList.add("active-modal-btn");
   IMO.value = e.IMO_NO;
   originData = e;
@@ -39,14 +43,15 @@ function setData(e) {
   setSelectBox("#classification", Classification);
 }
 
-function showModalTab(e, tabValue, tabBtn) {
-  console.log(e);
-  // console.log(document.querySelector(`#${type}`));
-  shipParticular.style.display = "none";
-  shipParticularTab.classList.remove("active-modal-btn");
+function showModalTab(e, type) {
+  shipParticularTab.style.display = "none";
+  document
+    .getElementById("shipParticularBtn")
+    .classList.remove("active-modal-btn");
   setModal();
-  tabValue.style.display = "block";
-  tabBtn.classList.add("active-modal-btn");
+  const tab = document.querySelector(`#${type}`);
+  tab.style.display = "block";
+  e.target.classList.add("active-modal-btn");
 }
 
 function saveData() {

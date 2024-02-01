@@ -1,8 +1,4 @@
-const shipParticular = document.getElementById("shipParticular");
-const mrvTab = document.getElementById("mrv");
-const dcsTab = document.getElementById("dcs");
-const ciiTab = document.getElementById("cii");
-const shipParticularTab = document.getElementById("shipParticularBtn");
+const shipParticular = document.getElementById("shipParticularBtn");
 const mrv = document.getElementById("mrvBtn");
 const dcs = document.getElementById("dcsBtn");
 const cii = document.getElementById("ciiBtn");
@@ -56,13 +52,10 @@ function getData() {
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
-  shipParticularTab.addEventListener("click", (e) =>
-    showModalTab(e, shipParticular, shipParticularTab)
+  shipParticular.addEventListener("click", (e) =>
+    showModalTab(e, "shipParticular")
   );
-  mrv.addEventListener("click", (e) => showModalTab(e, mrvTab, mrv));
-  dcs.addEventListener("click", (e) => showModalTab(e, dcsTab, dcs));
-  cii.addEventListener("click", (e) => showModalTab(e, ciiTab, cii));
-  shipParticularTab.addEventListener("click", (e) =>
-    showModalTab(e, shipParticular, shipParticularTab)
-  );
+  mrv.addEventListener("click", (e) => showModalTab(e, "mrv"));
+  dcs.addEventListener("click", (e) => showModalTab(e, "dcs"));
+  cii.addEventListener("click", (e) => showModalTab(e, "cii"));
 });
