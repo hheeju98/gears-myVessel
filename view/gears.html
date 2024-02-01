@@ -114,7 +114,7 @@
                 <div class="popup-technical">Technical Manager</div>
                 <div class="popup-yes">YES</div>
               </div>
-              <div class="gears-popup-tab">
+              <div classs="gears-popup-tab">
                 <button
                   id="shipParticularBtn"
                   class="gears-popup-tab-ship-particular tab-btn"
@@ -277,16 +277,22 @@
                       <div class="ship-particular-margin">
                         Ship Type(EU MRV)
                       </div>
-                      <input class="ice-input" />
+                      <div>
+                        <div id="EUShipType" class="selectboxStyling"></div>
+                      </div>
                     </div>
                     <div class="ship-particular-flex-element">
                       <div class="ship-particular-margin">MRV Company</div>
-                      <input class="ice-input" />
+                      <div>
+                        <div id="MRVcompany" class="selectboxStyling"></div>
+                      </div>
                     </div>
                   </div>
                   <div class="element-margin-top">
                     <div class="ship-particular-margin">MRV Method</div>
-                    <input class="ice-input" />
+                    <div>
+                      <div id="mrvMethod" class="selectboxStyling"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -298,13 +304,17 @@
                       class="ship-particular-flex-element element-margin-right"
                     >
                       <div class="ship-particular-margin">
-                        Ship Type(EU MRV)
+                        Ship Type(IMO DCS)
                       </div>
-                      <input class="ship-name-input" />
+                      <div>
+                        <div id="IMOshipType" class="selectboxStyling"></div>
+                      </div>
                     </div>
                     <div class="ship-particular-flex-element">
-                      <div class="ship-particular-margin">MRV Company</div>
-                      <input class="ice-input" />
+                      <div class="ship-particular-margin">DCS Method</div>
+                      <div>
+                        <div id="DCSmethod" class="selectboxStyling"></div>
+                      </div>
                     </div>
                   </div>
 
@@ -313,11 +323,11 @@
                       class="ship-particular-flex-element element-margin-right"
                     >
                       <div class="ship-particular-margin">Year of Delivery</div>
-                      <input class="ice-input" />
+                      <input class="ice-input" id="yearOfDelivery" />
                     </div>
                     <div class="ship-particular-flex-element">
                       <div class="ship-particular-margin">EEXI</div>
-                      <input class="ice-input" />
+                      <input class="ice-input" id="EEXI" />
                     </div>
                   </div>
                 </div>
@@ -337,6 +347,7 @@
                         <input
                           class="IMO-input text-align-right"
                           value="0"
+                          id="fi"
                           readonly
                         />
                       </div>
@@ -347,6 +358,7 @@
                         <input
                           class="IMO-input text-align-right"
                           value="0"
+                          id="fm"
                           readonly
                         />
                       </div>
@@ -362,6 +374,7 @@
                         <input
                           class="IMO-input text-align-right"
                           value="0"
+                          id="fc"
                           readonly
                         />
                       </div>
@@ -369,13 +382,15 @@
                         <div class="ship-particular-margin">
                           fi,vse (self-unloading bulk)
                         </div>
-                        <input class="ice-input" />
+                        <input class="ice-input" id="fiVse" />
                       </div>
                     </div>
                     <div class="ship-particular-margin element-margin-top">
                       Trial Purpose
                     </div>
-                    <input class="ice-input" />
+                    <div>
+                      <div id="trialPurpose" class="selectboxStyling"></div>
+                    </div>
                   </div>
                 </div>
               </div>

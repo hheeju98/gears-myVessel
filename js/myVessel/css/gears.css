@@ -879,3 +879,10 @@ input {
 .dx-toolbar-item-content {
   color: #fff !important;
 }
+.selectboxStyling {
+  width: 290px !important;
+  height: 38px !important;
+  border-radius: 4px;
+  border: solid 1px #d5dadf;
+  background-color: #fff !important;
+}
