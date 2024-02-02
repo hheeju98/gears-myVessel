@@ -1,3 +1,5 @@
+const htmlContent = document.querySelector(".popup-lower-wrapper");
+
 const popupWithScrollView = $("#popup")
   .dxPopup({
     width: 740,
@@ -9,9 +11,7 @@ const popupWithScrollView = $("#popup")
     toolbarItems: [],
     contentTemplate() {
       const $scrollView = $("<div/>");
-      $scrollView.append(
-        $("<div/>").html(document.querySelector(".popup-lower-wrapper"))
-      );
+      $scrollView.append($("<div/>").html(htmlContent));
       $scrollView.dxScrollView({
         width: "100%",
         height: "100%",
@@ -23,6 +23,8 @@ const popupWithScrollView = $("#popup")
 
 function setSelectBox(id, arrayData) {
   //for문
+  console.log("id ==>", id);
+  console.log("arrayD, ata ==>", arrayData);
   $(id).dxSelectBox({
     items: arrayData,
     inputAttr: { "aria-label": "Simple Product" },

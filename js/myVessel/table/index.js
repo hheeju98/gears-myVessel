@@ -35,11 +35,6 @@ function showTable(data) {
             .addClass("btn_do")
             .appendTo(container);
         },
-        onRowClick: (e) => {
-          console.log("gg");
-          // console.log(e.data);
-          setData(e);
-        },
       },
       "Technical_Manager",
       "Sync_API",
@@ -56,6 +51,10 @@ function showTable(data) {
       mode: "multiple",
       selectAllMode: "page",
       showCheckBoxesMode: "always",
+    },
+    onRowClick: (e) => {
+      // console.log(e.data);
+      setData(e);
     },
 
     showBorders: true,

@@ -1,6 +1,9 @@
 let originData;
 const shipParticularTab = document.getElementById("shipParticular");
-let currentTab = document.getElementById("shipParticular");
+const shipParticular = document.getElementById("shipParticularBtn");
+const mrv = document.getElementById("mrvBtn");
+const dcs = document.getElementById("dcsBtn");
+const cii = document.getElementById("ciiBtn");
 
 function setModal() {
   const mrvTab = document.getElementById("mrv");
@@ -14,38 +17,6 @@ function setModal() {
   mrv.classList.remove("active-modal-btn");
 }
 
-function setData(e) {
-  popupWithScrollView.show();
-  document
-    .getElementById("shipParticularBtn")
-    .addEventListener("click", (e) => showModalTab(e, "shipParticular"));
-  document
-    .getElementById("mrvBtn")
-    .addEventListener("click", (e) => showModalTab(e, "mrv"));
-  document
-    .getElementById("dcsBtn")
-    .addEventListener("click", (e) => showModalTab(e, "dcs"));
-  document
-    .getElementById("ciiBtn")
-    .addEventListener("click", (e) => showModalTab(e, "cii"));
-  setModal();
-  shipParticularTab.style.display = "block";
-  document
-    .getElementById("shipParticularBtn")
-    .classList.add("active-modal-btn");
-  originData = e; // 객체 키 클래스
-  setSelectBox("#iceClass", Ice_Class);
-  setSelectBox("#flag", Flag);
-  setSelectBox("#portOfRegistry", Port_of_Registry);
-  setSelectBox("#classification", Classification);
-  setSelectBox("#EUShipType", EU_Ship_Type);
-  setSelectBox("#MRVcompany", MRV_Company);
-  setSelectBox("#mrvMethod", MRV_Method);
-  setSelectBox("#IMOshipType", IMO_Ship_type);
-  setSelectBox("#DCSmethod", DCS_Method);
-  setSelectBox("#trialPurpose", Trial_Puropse);
-}
-
 function showModalTab(e, type) {
   shipParticularTab.style.display = "none";
   document
@@ -56,6 +27,53 @@ function showModalTab(e, type) {
   tab.style.display = "block";
   currentTab = tab;
   e.target.classList.add("active-modal-btn");
+}
+
+function setData(e) {
+  popupWithScrollView.show();
+  shipParticular.addEventListener("click", (e) =>
+    showModalTab(e, "shipParticular")
+  );
+  mrv.addEventListener("click", (e) => showModalTab(e, "mrv"));
+  dcs.addEventListener("click", (e) => showModalTab(e, "dcs"));
+  cii.addEventListener("click", (e) => showModalTab(e, "cii"));
+  setModal();
+  shipParticularTab.style.display = "block";
+  shipParticular.classList.add("active-modal-btn");
+  originData = e; // 객체 키 클래스
+  // setSelectBox("#iceClass", Ice_Class);
+  // setSelectBox("#flag", Flag);
+  // setSelectBox("#portOfRegistry", Port_of_Registry);
+  // setSelectBox("#classification", Classification);
+  // setSelectBox("#EUShipType", EU_Ship_Type);
+  // setSelectBox("#MRVcompany", MRV_Company);
+  // setSelectBox("#mrvMethod", MRV_Method);
+  // setSelectBox("#IMOshipType", IMO_Ship_type);
+  // setSelectBox("#DCSmethod", DCS_Method);
+  // setSelectBox("#trialPurpose", Trial_Puropse);
+
+  let aa = {
+    "#iceClass": Ice_Class,
+    "#flag": Flag,
+    "#portOfRegistry": Port_of_Registry,
+    "#classification": Classification,
+    "#EUShipType": EU_Ship_Type,
+    "#MRVcompany": MRV_Company,
+    "#mrvMethod": MRV_Method,
+    "#IMOshipType": IMO_Ship_type,
+    "#DCSmethod": DCS_Method,
+    "#trialPurpose": Trial_Puropse,
+  };
+
+  for (var key in aa) {
+    // key수만큼 실행됨
+    // document.write(key + "<br>");
+    // document.write(coworkers[key] + "<br>");
+    // console.log(key);
+    console.log("aa[key] ==>", key);
+    setSelectBox(key, aa[key]);
+    // console.log(key + " : " + aa[key]);
+  }
 }
 
 function saveData() {
