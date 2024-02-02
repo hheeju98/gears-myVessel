@@ -1,9 +1,3 @@
-const shipParticular = document.getElementById("shipParticularBtn");
-const mrv = document.getElementById("mrvBtn");
-const dcs = document.getElementById("dcsBtn");
-const cii = document.getElementById("ciiBtn");
-const htmlContent = document.querySelector(".popup-lower-wrapper");
-
 const popupWithScrollView = $("#popup")
   .dxPopup({
     width: 740,
@@ -15,7 +9,9 @@ const popupWithScrollView = $("#popup")
     toolbarItems: [],
     contentTemplate() {
       const $scrollView = $("<div/>");
-      $scrollView.append($("<div/>").html(htmlContent));
+      $scrollView.append(
+        $("<div/>").html(document.querySelector(".popup-lower-wrapper"))
+      );
       $scrollView.dxScrollView({
         width: "100%",
         height: "100%",
@@ -26,6 +22,7 @@ const popupWithScrollView = $("#popup")
   .dxPopup("instance");
 
 function setSelectBox(id, arrayData) {
+  //for문
   $(id).dxSelectBox({
     items: arrayData,
     inputAttr: { "aria-label": "Simple Product" },
@@ -35,7 +32,6 @@ function setSelectBox(id, arrayData) {
 
 function getData() {
   tableData
-    .get()
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
@@ -52,10 +48,4 @@ function getData() {
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
-  shipParticular.addEventListener("click", (e) =>
-    showModalTab(e, "shipParticular")
-  );
-  mrv.addEventListener("click", (e) => showModalTab(e, "mrv"));
-  dcs.addEventListener("click", (e) => showModalTab(e, "dcs"));
-  cii.addEventListener("click", (e) => showModalTab(e, "cii"));
 });
