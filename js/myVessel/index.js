@@ -22,9 +22,6 @@ const popupWithScrollView = $("#popup")
   .dxPopup("instance");
 
 function setSelectBox(id, arrayData) {
-  //for문
-  console.log("id ==>", id);
-  console.log("arrayD, ata ==>", arrayData);
   $(id).dxSelectBox({
     items: arrayData,
     inputAttr: { "aria-label": "Simple Product" },

@@ -66,13 +66,7 @@ function setData(e) {
   };
 
   for (var key in aa) {
-    // key수만큼 실행됨
-    // document.write(key + "<br>");
-    // document.write(coworkers[key] + "<br>");
-    // console.log(key);
-    console.log("aa[key] ==>", key);
     setSelectBox(key, aa[key]);
-    // console.log(key + " : " + aa[key]);
   }
 }
 
