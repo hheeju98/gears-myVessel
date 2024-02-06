@@ -41,18 +41,8 @@ function setData(e) {
   shipParticularTab.style.display = "block";
   shipParticular.classList.add("active-modal-btn");
   originData = e; // 객체 키 클래스
-  // setSelectBox("#iceClass", Ice_Class);
-  // setSelectBox("#flag", Flag);
-  // setSelectBox("#portOfRegistry", Port_of_Registry);
-  // setSelectBox("#classification", Classification);
-  // setSelectBox("#EUShipType", EU_Ship_Type);
-  // setSelectBox("#MRVcompany", MRV_Company);
-  // setSelectBox("#mrvMethod", MRV_Method);
-  // setSelectBox("#IMOshipType", IMO_Ship_type);
-  // setSelectBox("#DCSmethod", DCS_Method);
-  // setSelectBox("#trialPurpose", Trial_Puropse);
 
-  let aa = {
+  let selectBox = {
     "#iceClass": Ice_Class,
     "#flag": Flag,
     "#portOfRegistry": Port_of_Registry,
@@ -65,8 +55,8 @@ function setData(e) {
     "#trialPurpose": Trial_Puropse,
   };
 
-  for (var key in aa) {
-    setSelectBox(key, aa[key]);
+  for (var key in selectBox) {
+    setSelectBox(key, selectBox[key]);
   }
 }
 

@@ -724,9 +724,11 @@ element.style {
   margin-bottom: 26px;
 }
 .dx-toolbar {
-  background-color: #09976e !important;
+  /* background-color: #09976e !important; */
 }
-
+.dx-collection {
+  /* background-color: #09976e !important; */
+}
 .dx-button {
   background-color: #09976e !important;
   color: #fff !important;
@@ -869,4 +871,27 @@ input {
   border-radius: 4px;
   border: solid 1px #d5dadf;
   background-color: #fff !important;
+}
+#data-grid-demo {
+  min-height: 700px;
+}
+
+#gridDeleteSelected {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  margin: 1px;
+  top: 0;
+  background-color: #006fc4;
+}
+
+#gridDeleteSelected .dx-button-text {
+  line-height: 0;
+}
+
+.dx-popup-title {
+  background-color: #09976e !important;
+}
+.dx-button {
+  margin-bottom: 20px !important;
 }
