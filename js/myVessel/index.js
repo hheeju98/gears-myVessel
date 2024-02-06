@@ -1,5 +1,5 @@
 const htmlContent = document.querySelector(".popup-lower-wrapper");
-
+const deleteButton = document.getElementById("deleteButton");
 const popupWithScrollView = $("#popup")
   .dxPopup({
     width: 740,
@@ -34,11 +34,18 @@ function getData() {
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
-      document.querySelector(
-        ".gears-total"
-      ).textContent = `Total : ${dataCount}`;
-      showTable(tableData);
+      // document.querySelector(
+      //   ".gears-total"
+      // ).textContent = `Total : ${dataCount}`;
+
       setSelectBox("#productSimple", IMO_no);
+
+      data1 = new DevExpress.data.ArrayStore({
+        key: "ID",
+        data: tableData,
+      });
+
+      showTable(data1);
     })
     .catch((e) => {
       console.log("err=", e);

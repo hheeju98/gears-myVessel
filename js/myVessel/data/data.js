@@ -69,3 +69,14 @@ DCS_Method = [
 ];
 
 Trial_Puropse = ["EEOI", "EEPI", "cIDIST", "cdDIST"];
+
+const productTypes = [
+  {
+    id: 1,
+    text: "IMO NO",
+  },
+  {
+    id: 2,
+    text: "Ship Name",
+  },
+];

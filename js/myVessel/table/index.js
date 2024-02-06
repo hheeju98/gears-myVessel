@@ -1,3 +1,6 @@
+let dataGrid;
+let data1;
+
 function createCIIcell(container, options) {
   const wrapper = $("<div>").addClass("wrapper").appendTo(container);
   const firstSpan = $("<div>")
@@ -18,13 +21,18 @@ function createCIIcell(container, options) {
     $("<div>").addClass("CII-second").text("-").appendTo(secondSpan);
   }
 }
+// $(function () {
+//   $("#gridContainer").dxToolbar({
+//     items: [
+//       { text: "Add", locateInMenu: "auto" },
+//       { text: "Change", locateInMenu: "always" },
+//       { text: "Remove", locateInMenu: "always" },
+//     ],
+//   });
+// });
 
-function showTable(data) {
-  const data1 = new DevExpress.data.ArrayStore({
-    key: "ID",
-    data: data,
-  });
-  const dataGrid = $("#gridContainer")
+function showTable(data1) {
+  dataGrid = $("#gridContainer")
     .dxDataGrid({
       dataSource: data1,
       showBorders: true,
@@ -32,6 +40,11 @@ function showTable(data) {
         mode: "multiple",
         selectAllMode: "page",
         showCheckBoxesMode: "always",
+      },
+      searchPanel: {
+        visible: true,
+        location: "before",
+        highlightCaseSensitive: true,
       },
       columns: [
         "No",
@@ -61,12 +74,19 @@ function showTable(data) {
       toolbar: {
         items: [
           {
-            location: "after",
+            location: "before",
+            widget: "dxButton",
+            options: {
+              text: `Total : ${dataCount}`,
+              width: 150,
+              height: 38,
+            },
+          },
+          {
+            location: "before",
             widget: "dxButton",
             options: {
               text: "Delete ",
-
-              // disabled: true,
               onClick() {
                 dataGrid.getSelectedRowKeys().forEach((key) => {
                   data1.remove(key);
@@ -75,13 +95,49 @@ function showTable(data) {
               },
             },
           },
+          {
+            location: "after",
+            widget: "dxSelectBox",
+            locateInMenu: "auto",
+            options: {
+              width: 140,
+              items: productTypes,
+              valueExpr: "id",
+              displayExpr: "text",
+              value: productTypes[0].id,
+              inputAttr: { "aria-label": "Categories" },
+              onValueChanged(args) {
+                if (args.value > 1) {
+                  productsStore.filter("type", "=", args.value);
+                } else {
+                  productsStore.filter(null);
+                }
+                productsStore.load();
+              },
+            },
+          },
+          "searchPanel",
+          {
+            location: "after",
+            widget: "dxButton",
+            options: {
+              text: "Search",
+              width: 110,
+              height: 38,
+            },
+          },
+          {
+            location: "after",
+            widget: "dxButton",
+            locateInMenu: "auto",
+            options: {
+              icon: "refresh",
+              onClick() {
+                DevExpress.ui.notify("Refresh button has been clicked!");
+              },
+            },
+          },
         ],
-      },
-      onSelectionChanged(data) {
-        dataGrid.option(
-          // "toolbar.items[0].options.disabled",
-          !data.selectedRowsData.length
-        );
       },
       onRowClick: (e) => {
         setData(e);
