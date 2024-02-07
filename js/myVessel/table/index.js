@@ -21,15 +21,6 @@ function createCIIcell(container, options) {
     $("<div>").addClass("CII-second").text("-").appendTo(secondSpan);
   }
 }
-// $(function () {
-//   $("#gridContainer").dxToolbar({
-//     items: [
-//       { text: "Add", locateInMenu: "auto" },
-//       { text: "Change", locateInMenu: "always" },
-//       { text: "Remove", locateInMenu: "always" },
-//     ],
-//   });
-// });
 
 function showTable(data1) {
   dataGrid = $("#gridContainer")
@@ -56,7 +47,7 @@ function showTable(data1) {
           width: 140,
           cellTemplate(container) {
             $('<img src="/img/btn_doc.png">')
-              .on("dxclick", setData)
+              .on("dxclick", (e) => setData(e))
               .addClass("btn_do")
               .appendTo(container);
           },
@@ -79,15 +70,19 @@ function showTable(data1) {
             widget: "dxButton",
             options: {
               text: `Total : ${dataCount}`,
-              width: 150,
-              height: 38,
+              elementAttr: {
+                id: "toolbarTotal",
+              },
             },
           },
           {
             location: "before",
             widget: "dxButton",
             options: {
-              text: "Delete ",
+              elementAttr: {
+                id: "toolbarDeleteButton",
+              },
+              text: "Delete",
               onClick() {
                 dataGrid.getSelectedRowKeys().forEach((key) => {
                   data1.remove(key);
@@ -101,6 +96,10 @@ function showTable(data1) {
             widget: "dxSelectBox",
             locateInMenu: "auto",
             options: {
+              elementAttr: {
+                id: "toolbarSelectbox",
+              },
+              editorStylingMode: "outlined",
               width: 140,
               items: productTypes,
               valueExpr: "id",
@@ -122,6 +121,9 @@ function showTable(data1) {
             location: "after",
             widget: "dxButton",
             options: {
+              elementAttr: {
+                id: "toolbarSearchButton",
+              },
               text: "Search",
               width: 110,
               height: 38,
@@ -132,6 +134,9 @@ function showTable(data1) {
             widget: "dxButton",
             locateInMenu: "auto",
             options: {
+              elementAttr: {
+                id: "refreshButton",
+              },
               icon: "refresh",
               onClick() {
                 DevExpress.ui.notify("Refresh button has been clicked!");
@@ -140,9 +145,6 @@ function showTable(data1) {
           },
         ],
       },
-      // onRowClick: (e) => {
-      //   setData(e);
-      // },
     })
     .dxDataGrid("instance");
 }

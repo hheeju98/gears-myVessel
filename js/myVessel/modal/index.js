@@ -30,6 +30,7 @@ function showModalTab(e, type) {
 }
 
 function setData(e) {
+  console.log(e);
   popupWithScrollView.show();
   shipParticular.addEventListener("click", (e) =>
     showModalTab(e, "shipParticular")
@@ -40,7 +41,7 @@ function setData(e) {
   setModal();
   shipParticularTab.style.display = "block";
   shipParticular.classList.add("active-modal-btn");
-  originData = e; // 객체 키 클래스
+  originData = e;
 
   let selectBox = {
     "#iceClass": Ice_Class,

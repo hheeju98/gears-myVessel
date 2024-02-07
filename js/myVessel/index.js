@@ -34,10 +34,6 @@ function getData() {
     .then((res) => {
       let tableData = res.data;
       dataCount = tableData.length;
-      // document.querySelector(
-      //   ".gears-total"
-      // ).textContent = `Total : ${dataCount}`;
-
       setSelectBox("#productSimple", IMO_no);
 
       data1 = new DevExpress.data.ArrayStore({
@@ -54,4 +50,8 @@ function getData() {
 
 document.addEventListener("DOMContentLoaded", function () {
   getData();
+  const stylingMode = "outlined";
+  DevExpress.config({
+    editorStylingMode: stylingMode,
+  });
 });
