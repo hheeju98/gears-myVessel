@@ -56,6 +56,7 @@ function showTable(data1) {
           width: 140,
           cellTemplate(container) {
             $('<img src="/img/btn_doc.png">')
+              .on("dxclick", setData)
               .addClass("btn_do")
               .appendTo(container);
           },
@@ -139,9 +140,9 @@ function showTable(data1) {
           },
         ],
       },
-      onRowClick: (e) => {
-        setData(e);
-      },
+      // onRowClick: (e) => {
+      //   setData(e);
+      // },
     })
     .dxDataGrid("instance");
 }
