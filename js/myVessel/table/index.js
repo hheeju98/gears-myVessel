@@ -1,5 +1,5 @@
-let dataGrid;
 let data1;
+let totalCount;
 
 function createCIIcell(container, options) {
   const wrapper = $("<div>").addClass("wrapper").appendTo(container);
@@ -14,7 +14,6 @@ function createCIIcell(container, options) {
     .addClass(options.data.No <= 3 ? "CII-second1" : "CII-second")
     .text(options.data.No <= 3 ? "21 " : "-")
     .appendTo(firstSpan);
-
   for (let i = 1; i < 3; i++) {
     const secondSpan = $("<div>").addClass("CII-Rating").appendTo(wrapper);
     $("<div>").addClass("CII-first").text("-").appendTo(secondSpan);
@@ -23,7 +22,7 @@ function createCIIcell(container, options) {
 }
 
 function showTable(data1) {
-  dataGrid = $("#gridContainer")
+  const dataGrid = $("#gridContainer")
     .dxDataGrid({
       dataSource: data1,
       showBorders: true,
@@ -31,6 +30,10 @@ function showTable(data1) {
         mode: "multiple",
         selectAllMode: "page",
         showCheckBoxesMode: "always",
+      }, //click이벤트
+      onContentReady(e) {
+        totalCount = e.component.totalCount();
+        console.log(totalCount);
       },
       searchPanel: {
         visible: true,

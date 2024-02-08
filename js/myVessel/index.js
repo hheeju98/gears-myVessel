@@ -1,5 +1,5 @@
 const htmlContent = document.querySelector(".popup-lower-wrapper");
-const deleteButton = document.getElementById("deleteButton");
+
 const popupWithScrollView = $("#popup")
   .dxPopup({
     width: 740,
@@ -29,13 +29,13 @@ function setSelectBox(id, arrayData) {
   });
 }
 
-function getData() {
-  tableData
+document.addEventListener("DOMContentLoaded", function () {
+  tableData()
     .then((res) => {
-      let tableData = res.data;
+      console.log(res);
+      let tableData = res;
       dataCount = tableData.length;
       setSelectBox("#productSimple", IMO_no);
-
       data1 = new DevExpress.data.ArrayStore({
         key: "ID",
         data: tableData,
@@ -46,11 +46,7 @@ function getData() {
     .catch((e) => {
       console.log("err=", e);
     });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  getData();
-  const stylingMode = "outlined";
+  const stylingMode = "outlined"; //직접
   DevExpress.config({
     editorStylingMode: stylingMode,
   });

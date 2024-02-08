@@ -72,7 +72,6 @@ function getCII() {
   const FC = document.getElementById("fc");
   const FI_VSE = document.getElementById("fiVse");
   const Trial_Purpose = document.getElementById("trialPurpose");
-
   const CIIdata = {
     FI: FI.value,
     FM: FM.value,

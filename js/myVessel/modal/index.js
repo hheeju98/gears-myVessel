@@ -4,6 +4,7 @@ const shipParticular = document.getElementById("shipParticularBtn");
 const mrv = document.getElementById("mrvBtn");
 const dcs = document.getElementById("dcsBtn");
 const cii = document.getElementById("ciiBtn");
+let currentTab = document.getElementById("shipParticular");
 
 function setModal() {
   const mrvTab = document.getElementById("mrv");
