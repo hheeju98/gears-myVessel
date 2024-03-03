@@ -25,13 +25,13 @@ function showModalTab(e, type) {
     .classList.remove("active-modal-btn");
   setModal();
   const tab = document.querySelector(`#${type}`);
+  console.log(tab);
   tab.style.display = "block";
   currentTab = tab;
   e.target.classList.add("active-modal-btn");
 }
 
 function setData(e) {
-  console.log(e);
   popupWithScrollView.show();
   shipParticular.addEventListener("click", (e) =>
     showModalTab(e, "shipParticular")

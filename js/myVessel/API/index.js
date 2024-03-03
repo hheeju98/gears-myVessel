@@ -1,5 +1,4 @@
 const tableData = () => {
-  const gg = getGearsData.get().then((res) => res.data);
-  console.log(gg);
-  return gg;
+  const data2 = getGearsData.get().then((res) => res.data);
+  return data2;
 };

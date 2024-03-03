@@ -2,6 +2,7 @@ let data1;
 let totalCount;
 let selectedData;
 let dataGrid;
+
 function createCIIcell(container, options) {
   const wrapper = $("<div>").addClass("wrapper").appendTo(container);
   const firstSpan = $("<div>")
@@ -31,7 +32,8 @@ function showTable() {
         mode: "multiple",
         selectAllMode: "page",
         showCheckBoxesMode: "always",
-      }, //click이벤트
+      },
+
       onContentReady(e) {
         totalCount = e.component.totalCount();
         console.log(totalCount);
@@ -69,137 +71,9 @@ function showTable() {
   console.log(selectedData);
 }
 
-// function showTable(data1) {
-//   const dataGrid = $("#gridContainer")
-//     .dxDataGrid({
-//       dataSource: data1,
-//       showBorders: true,
-
-//       selection: {
-//         mode: "multiple",
-//         selectAllMode: "page",
-//         showCheckBoxesMode: "always",
-//       }, //click이벤트
-//       onContentReady(e) {
-//         totalCount = e.component.totalCount();
-//         console.log(totalCount);
-//       },
-//       // searchPanel: {
-//       //   visible: true,
-//       //   location: "before",
-//       //   highlightCaseSensitive: true,
-//       // },
-//       columns: [
-//         "No",
-//         "IMO_NO",
-//         "Vessel_Name",
-//         {
-//           dataField: "DOC",
-//           dataType: "img",
-//           width: 140,
-//           cellTemplate(container) {
-//             $('<img src="/img/btn_doc.png">')
-//               .on("dxclick", (e) => setData(e))
-//               .addClass("btn_do")
-//               .appendTo(container);
-//           },
-//         },
-//         "Technical_Manager",
-//         "Sync_API",
-//         {
-//           dataField: "CII_Rating",
-//           dataType: "number",
-//           width: 190,
-//           cellTemplate(container, options) {
-//             createCIIcell(container, options);
-//           },
-//         },
-//       ],
-
-//       // toolbar: {
-//       //   items: [
-//       //     {
-//       //       location: "before",
-//       //       widget: "dxButton",
-//       //       options: {
-//       //         text: `Total : ${dataCount}`,
-//       //         elementAttr: {
-//       //           id: "toolbarTotal",
-//       //         },
-//       //       },
-//       //     },
-//       //     {
-//       //       location: "before",
-//       //       widget: "dxButton",
-//       //       options: {
-//       //         elementAttr: {
-//       //           id: "toolbarDeleteButton",
-//       //         },
-//       //         text: "Delete",
-//       //         onClick() {
-//       //           dataGrid.getSelectedRowKeys().forEach((key) => {
-//       //             data1.remove(key);
-//       //           });
-//       //           dataGrid.refresh();
-//       //         },
-//       //       },
-//       //     },
-//       //     {
-//       //       location: "after",
-//       //       widget: "dxSelectBox",
-//       //       locateInMenu: "auto",
-//       //       options: {
-//       //         elementAttr: {
-//       //           id: "toolbarSelectbox",
-//       //         },
-//       //         editorStylingMode: "outlined",
-//       //         width: 140,
-//       //         items: productTypes,
-//       //         valueExpr: "id",
-//       //         displayExpr: "text",
-//       //         value: productTypes[0].id,
-//       //         inputAttr: { "aria-label": "Categories" },
-//       //         onValueChanged(args) {
-//       //           if (args.value > 1) {
-//       //             productsStore.filter("type", "=", args.value);
-//       //           } else {
-//       //             productsStore.filter(null);
-//       //           }
-//       //           productsStore.load();
-//       //         },
-//       //       },
-//       //     },
-//       //     "searchPanel",
-//       //     {
-//       //       location: "after",
-//       //       widget: "dxButton",
-//       //       options: {
-//       //         elementAttr: {
-//       //           id: "toolbarSearchButton",
-//       //         },
-//       //         text: "Search",
-//       //         width: 110,
-//       //         height: 38,
-//       //       },
-//       //     },
-//       //     {
-//       //       location: "after",
-//       //       widget: "dxButton",
-//       //       locateInMenu: "auto",
-//       //       options: {
-//       //         elementAttr: {
-//       //           id: "refreshButton",
-//       //         },
-//       //         icon: "refresh",
-//       //         onClick() {
-//       //           DevExpress.ui.notify("Refresh button has been clicked!");
-//       //         },
-//       //       },
-//       //     },
-//       //   ],
-//       // },
-//     })
-//     .dxDataGrid("instance");
-// }
-// let selectedData = showTable.dataGrid.getSelectedRowsData();
-// console.log(selectedData);
+function deleteSelectedData() {
+  dataGrid.getSelectedRowKeys().forEach((key) => {
+    data1.remove(key);
+  });
+  dataGrid.refresh();
+}
